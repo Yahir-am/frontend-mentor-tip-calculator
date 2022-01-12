@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Frontend Mentor | Tip calculator app</title>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <main>
+    <img src="./images/logo.svg" alt="logo" class="logo">
+    <div class="container">
+      <div class="left--input">
+        <form class="bill__form">
+          <label for="bill">Bill</label>
+          <p class="error__bill"></p>
+          <input type="number" name="bill" placeholder="0" maxlength="7" required class="bill__input">
+        </form>
+        <div class="tip__container">
+          <p class="tip__text">Select Tip %</p>
+          <ul>
+            <li>
+              <button type="number" value="5" class="porcen">5%</button>
+            </li>
+            <li>
+              <button type="number" value="10" class="porcen">10%</button>
+            </li>
+            <li>
+              <button type=number" value="15" class="porcen">15%</button>
+            </li>
+            <li>
+              <button type="number" value="25" class="porcen">25%</button>
+            </li>
+            <li>
+              <button type="number" value="50" class="porcen">50%</button>
+            </li>
+            <li>
+              <input type="number" name="custom" placeholder="Custom" maxlength="2" class="custom">
+            </li>
+          </ul>
+        </div>
+        <form class="form--people">
+          <p class="error__people"></p>
+          <label for="people">Number of People</label>
+          <input type="number" name="people" placeholder="0" required class="people__input">
+        </form>
+      </div>
+      <div class="rigth--output">
+        <div class="totals">
+          <div class="tip__amount total">
+            <p class="title">Tip Amount <br>
+              <span>/ person</span>
+            </p>
+            <p class="output--tip output">$0.00</p>
+          </div>
+          <div class="total--person total">
+            <p class="title">Total <br>
+              <span>/ person</span>
+            </p>
+            <p class="output--total output">$0.00</p>
+          </div>
+        </div>
+        <button type="reset" class="calc__reset">Reset</button>
+      </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

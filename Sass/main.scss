@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+$total: hsl(172, 67%, 45%);
+$boxes: hsl(183, 100%, 15%);
+$hoverBox: hsl(186, 14%, 43%);
+$Dark-grayish: hsl(184, 14%, 56%);
+$backgorund-main: hsl(185, 41%, 84%);
+$totalText: hsl(189, 41%, 97%);
+$targetBack: hsl(0, 0%, 100%);
+
+@mixin  letter($fontSize,$fontWeight,$color) {
+    font-family: 'Space Mono';
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    color: $color;
+}
+@mixin icons($background,$backgroundPos) {
+    background: $background;
+    background-position: $backgroundPos;
+}
+@mixin size($width,$heigth,$margin) {
+    width: $width;
+    height: $heigth;
+    margin: $margin;
+}
+@mixin border($borderR,$border,$backgroundB) {
+    border-radius: $borderR;
+    border: $border;
+    background: $backgroundB;
+}
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    background: $backgorund-main;
+    min-height: 100vh;
+    font-family: 'Space Mono', monospace;
+    display: flex;
+}
+main{
+    @include size(65%, 100%, 8em auto);
+    @media screen and (max-width: 899px){
+        width: 100vw;
+        overflow: hidden;
+        .logo{
+            margin-left: 40%;
+        }
+        .container{
+            flex-direction: column;
+            width: 100vw;
+            height: 100%;
+        }
+        .left--input,
+        .rigth--output{
+            width: 100%;
+        }
+    }
+}
+.logo{
+    margin-left: 45%;
+}
+.container{
+    @include border(30px, none, $targetBack);
+    margin-top: 3.5em;
+    padding: 2em;
+    display: flex;
+    gap: 3em;
+}
+input,
+button{
+    font-size: 24px;
+}
+.left--input{
+    width: 45%;
+    form{
+        display: flex;
+        flex-direction: column;
+        margin-top: 1em;
+        label{
+            @include letter(14px, 700, $hoverBox);
+        }
+        .bill-error:focus,
+        .people-error:focus{
+            border: 2px solid rgb(253, 66, 66);
+        }
+        input{
+            margin-top: 0.5em;
+            height: 2em;
+            text-align: right;
+            padding: 0.5em;
+            border: none;
+            @include letter(25px,700 ,$boxes);
+            &::placeholder{
+                color: $Dark-grayish;
+            }
+            &:focus{
+                border: 2px solid $total;
+                outline: none;
+            }
+        }
+        .bill__input{
+            @include icons(url('../images/icon-dollar.svg') no-repeat $totalText, 0.5em center);
+        }
+        .people__input{
+            @include icons(url('../images/icon-dollar.svg') no-repeat $totalText, 0.5em center);
+        }
+    }
+}
+.tip__container{
+    @include size(100%, 9em, 3em 0 0 0);
+    @media screen and (max-width: 599px){
+        height: 12em;
+        ul{
+            grid-template-columns: repeat(2,50%);
+        }
+    }
+    p{
+        @include letter(14px, 700, $hoverBox);
+    }
+    ul{
+        display: grid;
+        grid-template-columns: repeat(3,31%);
+        gap: 0.7em;
+        list-style: none;
+        @include size(100%, 6em, 1em 0 0 0);
+        
+        li{
+            input,
+            button{
+                @include size(100%, 100%, 0);
+                font-family: 'Space Mono';
+                @include border(5px, none, none);
+            }
+            button{
+                cursor: pointer;
+                background: $boxes;
+                @include letter(25px, 700, $totalText);
+            }
+            .selected{
+                background: $total;
+                color: $boxes;
+            }
+            input{
+                text-align: right;
+                padding: 0 0.5em;
+                @include letter(20px, 700, $boxes);
+                background: $totalText;
+                &::placeholder{
+                    text-align: center;
+                }
+                &:focus{
+                    border: 2px solid $total;
+                    outline: none;
+                }
+            }
+            .custom-error:focus{
+                border: 2px solid rgb(253, 66, 66);
+            }
+        }
+    }
+}
+
+form{
+    margin-top: 3em;
+    position: relative;
+    p{
+        color: rgb(253, 66, 66);
+        position: absolute;
+        left: 60%;
+        @include size(100%, 22%, 0);
+        font-size: 13px;
+        visibility: hidden;
+    }
+}
+.rigth--output{
+    width: 50%;
+    @include border(15px, none, $boxes);
+    padding: 3em;
+    .total{
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        .title{
+            @include letter(14px,700 , $totalText);
+            span{
+                @include letter(13px,400, $Dark-grayish);
+            }
+        }
+        .output{
+            @include letter(40px, 700, $total);
+            position: absolute;
+            right: 0%;
+            bottom: 0%;
+        }
+    }
+    .total--person{
+        margin-top: 2em;
+    }
+    button{
+        @include size(100%, 1.5em, 40% 0 0 0);
+        text-transform: uppercase;
+        @include letter(24px, 700, $boxes);
+        @include border(5px,none, $total);
+        cursor: pointer;
+        &:hover{
+            background: hsl(172, 88%, 61%);
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+}
+
